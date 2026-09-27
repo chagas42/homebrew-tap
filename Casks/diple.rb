@@ -34,12 +34,10 @@ cask "diple" do
     once if you have not. There is no setup screen and nothing to paste.
 
     The build is signed ad-hoc rather than notarised, which needs a paid
-    Apple Developer account, so macOS quarantines it. Either install with
-
-      brew install --cask --no-quarantine chagas42/tap/diple
-
-    or clear it afterwards:
+    Apple Developer account, so macOS quarantines it. Clear the flag once:
 
       xattr -dr com.apple.quarantine /Applications/Diple.app
+
+    Or right-click the app and choose Open the first time.
   EOS
 end
