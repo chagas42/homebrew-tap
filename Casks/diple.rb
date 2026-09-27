@@ -12,12 +12,12 @@ cask "diple" do
     strategy :github_latest
   end
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
   depends_on formula: "gh"
 
   app "Diple.app"
 
-  postflight do
+  postflight_steps do
     system_command "/usr/bin/xattr",
                    args: ["-dr", "com.apple.quarantine", "#{appdir}/Diple.app"],
                    sudo: false
