@@ -17,11 +17,6 @@ cask "diple" do
 
   app "Diple.app"
 
-  postflight_steps do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Diple.app"],
-                   sudo: false
-  end
 
   uninstall quit: "com.chagas42.diple"
 
@@ -39,6 +34,12 @@ cask "diple" do
     once if you have not. There is no setup screen and nothing to paste.
 
     The build is signed ad-hoc rather than notarised, which needs a paid
-    Apple Developer account. The cask clears the quarantine flag for you.
+    Apple Developer account, so macOS quarantines it. Either install with
+
+      brew install --cask --no-quarantine chagas42/tap/diple
+
+    or clear it afterwards:
+
+      xattr -dr com.apple.quarantine /Applications/Diple.app
   EOS
 end
