@@ -1,6 +1,6 @@
 cask "diple" do
-  version "1.1.0"
-  sha256 "700070c6e2b8bd93c2667c9d75c37d70fccfdcb657aa5d6e059011e155cc6939"
+  version "1.3.0"
+  sha256 "231e354484d31dff08ea9c498391f1d7dbb052ff62b0ccd546d285a8af5d756e"
 
   url "https://github.com/chagas42/diple/releases/download/v#{version}/Diple-#{version}.zip"
   name "Diple"
@@ -17,6 +17,11 @@ cask "diple" do
 
   app "Diple.app"
 
+  # Signed ad-hoc, not notarised: without this, macOS offers to move it to the Trash.
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Diple.app"]
+  end
 
   uninstall quit: "com.chagas42.diple"
 
@@ -32,12 +37,5 @@ cask "diple" do
       gh auth login
 
     once if you have not. There is no setup screen and nothing to paste.
-
-    The build is signed ad-hoc rather than notarised, which needs a paid
-    Apple Developer account, so macOS quarantines it. Clear the flag once:
-
-      xattr -dr com.apple.quarantine /Applications/Diple.app
-
-    Or right-click the app and choose Open the first time.
   EOS
 end
