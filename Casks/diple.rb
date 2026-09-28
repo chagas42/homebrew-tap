@@ -18,9 +18,8 @@ cask "diple" do
   app "Diple.app"
 
   # Signed ad-hoc, not notarised: without this, macOS offers to move it to the Trash.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Diple.app"]
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Diple.app"]
   end
 
   uninstall quit: "com.chagas42.diple"
