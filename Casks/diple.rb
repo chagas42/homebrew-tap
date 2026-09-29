@@ -1,6 +1,6 @@
 cask "diple" do
-  version "1.14.0"
-  sha256 "ee1354801aa9062f250deab06eb3bac1649cb4e6fbe8e32f6d289d7ef785dfde"
+  version "1.15.0"
+  sha256 "1473bc386aad1945f7d223b3698880fa932a1c8cd68643ee290af566e3e457b6"
 
   url "https://github.com/chagas42/diple/releases/download/v#{version}/Diple-#{version}.zip"
   name "Diple"
